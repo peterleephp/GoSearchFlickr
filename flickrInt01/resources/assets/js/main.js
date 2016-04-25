@@ -11,10 +11,11 @@ $grid.imagesLoaded().progress( function() {
   $grid.masonry();
 });  
 
-$('.grid-item').click(function(){
+//onclick next page
+$('.grid').click(function(){
   var page = $("<input>")
                .attr("type", "hidden")
-               .attr("name", "page").val($('#pageNumber').text());
+               .attr("name", "page").val(Number($('#pageNumber').text()));
   $('form#searchForm').append($(page));
   $('form#searchForm').submit();
 })

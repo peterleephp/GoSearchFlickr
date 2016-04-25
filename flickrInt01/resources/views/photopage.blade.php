@@ -22,13 +22,13 @@
 		</div>
 -->
 		<div class='col-sm-offset-2 col-sm-6'>
-		{!! Form::text('tags', $tagsStr, array('class' => 'form-control input-large search-query')) !!}
+		{!! Form::text('tags', $tagsStr, array('class' => 'form-control input-lg')) !!}
 		</div>
         	<div class="col-sm-2">
-		{!! Form::button('Go!',  array('type' => 'submit', 'class' => 'btn btn-default')) !!}
+		{!! Form::button('Go!',  array('type' => 'submit', 'class' => 'btn btn-default btn-lg')) !!}
 		</div>
 	</div>
-<div id="pageNumber" class="hidden">{{$pageNumber or 1}}</div>
+<div id="pageNumber" class="hidden">{{$nextPage or 1}}</div>
 {!! Form::close() !!}
 <div class="row">
 	<div class="grid">

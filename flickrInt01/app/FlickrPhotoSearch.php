@@ -225,7 +225,22 @@ This method does not require authentication.
 		);
 
 			$result = $this->flickr_photos_search($args);
-			//if ($format == 'php_serial') 
+			$result = unserialize($result); 
+			//dd($result);
+			return $result;
+	}
+
+	public function byTagsAtPage($tags,$page)
+	{
+		$args = array(
+			'api_key' => $this->apiKey,
+			'tags' => $tags,
+			'per_page' =>$this->perPage, 
+			'page' =>$page, 
+			'format' =>'php_serial'
+		);
+
+			$result = $this->flickr_photos_search($args);
 			$result = unserialize($result); 
 			//dd($result);
 			return $result;

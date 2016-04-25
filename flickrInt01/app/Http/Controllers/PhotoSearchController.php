@@ -25,23 +25,33 @@ class PhotoSearchController extends Controller
 	{
 		$args = Input::all();
 		$tags = array_get($args,'tags',' ');//default to space
-		$results=$this->photoSearch->byTags($tags);
-
+		$page = array_get($args,'page','1');//default to 1
+	
 		$photos = [];
-		$page = 1;
-		dd($results);
-		if($results['stat'] == 'ok')
+		$nextPage = 1;
+		$numberOfPages = 0;
+
+		$results=$this->photoSearch->byTagsAtPage($tags,$page);
+
+		if(isset($results) && $results['stat'] == 'ok')
 		{
+			//dd($results);
 			$photos = array_get($results,'photos.photo');
-			$page = array_get($results,'photos.page');
+			$numberOfPages = array_get($results,'photos.pages');
+			if($page > $numberOfPages )
+			{
+				return redirect('search/flickr?'.http_build_query(array('tags'=>$tags)));
+			}
+			$nextPage = $page + 1;
 		}
 		else { }
+
 
 		//dd($photos);
 		$view = view('photopage')
 			->with('tagsStr',trim($tags))
 			->with('photos',$photos)
-			->with('pageNumber',$page)
+			->with('nextPage',$nextPage)
 			;
 		return $view;
 	}
