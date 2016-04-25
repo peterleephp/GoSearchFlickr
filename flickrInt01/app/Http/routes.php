@@ -11,6 +11,9 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('search/flickr', 'PhotoSearchController@search')->name('searchflickr')->middleware(['request.check']);

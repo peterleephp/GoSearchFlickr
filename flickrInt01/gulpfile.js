@@ -12,5 +12,19 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+	//mix.sass('app.scss');
+
+
+	mix.styles([
+		'masonry.css'
+		], 'public/css/photopage.css');
+
+	mix.scripts([
+		'jquery.min.js',
+		'masonry.pkgd.js',
+		'imagesloaded.pkgd.js',
+		'main.js'
+	]);
+
+	mix.copy('resources/assets/css/bootstrap.min.css','public/css/bootstrap.min.css');
 });
