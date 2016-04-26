@@ -13,8 +13,14 @@ Appache example, point the DocumentRoot to flickrInt01/public folder
 <VirtualHost *:8080>
     DocumentRoot /{path to the flickrInt01}/public
 
+
+
 ## Composer to get dependencies ready
   Composer install 
+
+## Fill the .env file
+cp .env.example .env
+php artisan key:generate
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
